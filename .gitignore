@@ -1,0 +1,8 @@
+node_modules
+dist
+# banco SQLite + fotos originais (ficam só na máquina; o site publicado usa a cópia em publicar/)
+data
+*.log
+.env
+.claude
+*.tsbuildinfo

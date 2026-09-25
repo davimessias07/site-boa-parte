@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --color-creme: #F5F0E8;
+  --color-creme-escuro: #EDE4D3;
+  --color-ouro: #C9A052;
+  --color-ouro-claro: #E3C98F;
+  --color-ouro-escuro: #9C7A35;
+  --color-marinho: #1B2A4A;
+  --color-marinho-claro: #2A3D66;
+  --color-cinza: #6B7A90;
+  --color-whatsapp: #25D366;
+
+  --font-serif: "Playfair Display Variable", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter Variable", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --shadow-card: 0 1px 2px rgb(27 42 74 / 0.04), 0 4px 16px -4px rgb(27 42 74 / 0.08);
+  --shadow-card-hover: 0 2px 4px rgb(27 42 74 / 0.06), 0 16px 32px -8px rgb(27 42 74 / 0.16);
+
+  --animate-surgir: surgir 0.5s ease-out both;
+  @keyframes surgir {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-padding-top: 6rem;
+  }
+  body {
+    @apply bg-creme text-marinho font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3 {
+    @apply font-serif text-balance;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ouro;
+  }
+  ::selection {
+    @apply bg-ouro-claro text-marinho;
+  }
+}
+
+@utility container-site {
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition
+    disabled:cursor-not-allowed disabled:opacity-60 active:scale-[0.98];
+}
+
+@utility btn-ouro {
+  @apply btn bg-ouro text-marinho shadow-sm hover:bg-ouro-escuro hover:text-white;
+}
+
+@utility btn-marinho {
+  @apply btn bg-marinho text-white hover:bg-marinho-claro;
+}
+
+@utility btn-contorno {
+  @apply btn border border-marinho/20 bg-white/60 text-marinho hover:border-ouro hover:bg-white;
+}
+
+@utility ornamento {
+  @apply flex items-center gap-3 text-xs font-semibold tracking-[0.2em] text-ouro-escuro uppercase
+    before:h-px before:w-8 before:bg-ouro after:h-px after:w-8 after:bg-ouro;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
