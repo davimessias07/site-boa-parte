@@ -4,7 +4,7 @@
 //   npm run sincronizar -- --fornecedor=PRE   só um (PRE, ATC, SAL; separados por vírgula)
 //   npm run sincronizar -- --simular          só mostra o que faria (não grava nem baixa fotos)
 //   npm run sincronizar -- --limite=20        para testes: poucos produtos (não marca nada como sem estoque)
-//   npm run sincronizar -- --margem=2         preço de venda = preço do distribuidor × margem (padrão 2)
+//   npm run sincronizar -- --margem=1.3       preço de venda = preço do distribuidor × margem (padrão 1 = mesmo preço)
 //
 // Regras:
 // - Só entra produto EM ESTOQUE no distribuidor e dentro das categorias do site.
@@ -42,9 +42,9 @@ const COLETORES: Coletor[] = [premoli, atacadao, sales]
 const escolhidos = args.fornecedor?.toUpperCase().split(',').map((s) => s.trim())
 const alvo = escolhidos ? COLETORES.filter((c) => escolhidos.includes(c.prefixo)) : COLETORES
 const limite = args.limite ? Number(args.limite) : undefined
-const margem = Number(args.margem ?? process.env.MARGEM ?? 2)
+const margem = Number(args.margem ?? process.env.MARGEM ?? 1)
 if (!alvo.length || !(margem > 0)) {
-  console.error('Uso: npm run sincronizar -- [--fornecedor=PRE,ATC,SAL] [--simular] [--limite=N] [--margem=2]')
+  console.error('Uso: npm run sincronizar -- [--fornecedor=PRE,ATC,SAL] [--simular] [--limite=N] [--margem=1]')
   process.exit(1)
 }
 

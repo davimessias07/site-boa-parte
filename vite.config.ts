@@ -16,6 +16,8 @@ export default defineConfig({
       '/uploads': api,
     },
   },
+  // `vite preview --outDir publicar` simula a Vercel: sem proxy, /uploads e /dados são arquivos da pasta.
+  preview: { proxy: {} },
   build: {
     target: 'es2022',
     rolldownOptions: {

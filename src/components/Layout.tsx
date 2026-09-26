@@ -1,6 +1,7 @@
 import { Suspense } from 'react'
 import { Outlet, ScrollRestoration } from 'react-router'
 import { linkWhatsApp } from '../../shared/catalogo'
+import { AnalisesVercel } from './AnalisesVercel'
 import { Footer } from './Footer'
 import { Header } from './Header'
 import { WhatsAppIcone } from './WhatsAppIcone'
@@ -39,6 +40,7 @@ export function Layout() {
         <WhatsAppIcone className="size-7" />
       </a>
       <ScrollRestoration getKey={(loc) => loc.pathname + loc.search} />
+      {import.meta.env.VITE_ESTATICO === 'true' && <AnalisesVercel />}
     </>
   )
 }

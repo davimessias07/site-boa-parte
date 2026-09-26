@@ -49,13 +49,13 @@ Faça backup da pasta `data/` — ela contém o banco (`boaparte.db`) e as fotos
 ## Sincronização com os distribuidores
 
 Importa dos sites da Premoli, do Atacadão e da Sales **só os produtos em estoque** e dentro das
-categorias do site, com fotos (baixadas e otimizadas) e **preço = 2× o preço do distribuidor**.
+categorias do site, com fotos (baixadas e otimizadas) e **o mesmo preço do site do distribuidor**.
 
 ```bash
 npm run sincronizar                          # todos
 npm run sincronizar -- --fornecedor=ATC      # só um (PRE, ATC, SAL)
 npm run sincronizar -- --simular             # mostra o que faria, sem gravar
-npm run sincronizar -- --margem=2.2          # outra margem
+npm run sincronizar -- --margem=1.3          # aplica margem (ex.: +30%); padrão 1 = mesmo preço
 ```
 
 - Rodar de novo **atualiza preço e estoque**: o que esgotar/sumir no distribuidor sai do site
